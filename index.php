@@ -1,22 +1,13 @@
 <?php
 
-class User
+try
 {
-    public $name;
-    public $age;
-
-    function __construct($name, $age)
-    {
-        $this->name = $name;
-        $this->age = $age;
-    }
-
-    function hello()
-    {
-        echo "Hello $this->name";
-    }
+    $connectionPdo = new PDO("mysql:host=localhost", "root", "");
+    echo "Connection with BD";
+}
+catch(PDOException $ex)
+{
+    echo "Connection failed: " . $ex->getMessage();
 }
 
-
-$bob = new User("Bobby", 25);
-$bob->hello();
+$connectionPdo = null;
